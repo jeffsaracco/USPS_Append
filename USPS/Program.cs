@@ -20,7 +20,7 @@ namespace USPS
 
                     while ((line = _reader.ReadLine()) != null)
                     {
-                        string position_field = "00301107016000000000";
+                        string position_field = "00301904795001000000";
 
                         position_field += line.Substring(15, 5);
                         position_field += line.Substring(200, 4);

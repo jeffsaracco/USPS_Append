@@ -20,21 +20,16 @@ namespace USPS
 
                     while ((line = _reader.ReadLine()) != null)
                     {
-                        string position_field = "00301904795001000000";
+                        string position_field = "00";
 
+                        position_field += line.Substring(172, 3);
+                        position_field += line.Substring(175, 15);
                         position_field += line.Substring(15, 5);
                         position_field += line.Substring(200, 4);
                         position_field += line.Substring(169, 2);
 
                         if (position_field.Length == 31)
-                        {
                             _writer.WriteLine(line + position_field + OpenSource.OneCode.Bars(position_field));
-                        }
-                        else
-                        {
-                            Console.WriteLine("Fuck!");
-                        }
-
                     }
 
                     _reader.Close();
